@@ -101,7 +101,12 @@ class ApiIntegrationTest {
         Number id = JsonPath.read(body, "$.id");
         return id.longValue();
     }
-
+    @Test
+    void pingIsPublic() throws Exception {
+        mockMvc.perform(get("/ping"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("ok"));
+    }
     // ------------------------------------------------------------------ register and login
 
     @Test

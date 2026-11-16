@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // no server-side sessions
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/error").permitAll()     // login/register stay open
+                        .requestMatchers("/auth/**", "/ping", "/error").permitAll()     // login/register stay open
 
                         .anyRequest().authenticated()              // everything else needs a valid token
                 )
